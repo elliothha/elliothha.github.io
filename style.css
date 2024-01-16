@@ -1,13 +1,115 @@
+@font-face {
+    font-family: 'ProximaNova-400';
+    src: url('proximanova_regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ProximaNova-300';
+    src: url('proximanova_light.otf') format('opentype');
+}
+
+h1 {
+    color: white;
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+h2, h4 {
+    color: gray;
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'ProximaNova-400', sans-serif;
+    letter-spacing: 3px;
+}
+
 .container {
     display: flex;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 .left {
-    flex: 30%; /* 30% width */
-    background-color: #f2f2f2; /* Just for visibility */
+    flex: 40%; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-image: url('images/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right center;
 }
 
 .right {
-    flex: 70%; /* 70% width */
+    flex: 60%;
     background-color: #ddd; /* Just for visibility */
+}
+
+.profile {
+    margin-top: 30%;
+    margin-right: 14%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.profile img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.bio {
+    margin-top: 50px;
+    text-align: right;
+}
+
+.content {
+    margin: 10% 5%;
+}
+
+.resume {
+    margin-right: 14%;
+    margin-top: 5%;
+}
+
+.resume h4 {
+    color: gray;
+    transition: color 0.5s ease;
+}
+
+.resume h4:hover {
+    color: white;
+}
+
+.links {
+    margin-right: 14%;
+    margin-top: 40%;
+}
+
+.icons {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+.icons li {
+    margin-left: 10px;
+}
+
+.icons i {
+    font-size: 32px; /* Example size */
+    color: gray; /* Example color */
+    transition: color 0.5s ease;
+}
+
+.icons i:hover {
+    color: white;
 }

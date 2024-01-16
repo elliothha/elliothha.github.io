@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+}
+
+.left {
+    flex: 30%; /* 30% width */
+    background-color: #f2f2f2; /* Just for visibility */
+}
+
+.right {
+    flex: 70%; /* 70% width */
+    background-color: #ddd; /* Just for visibility */
+}

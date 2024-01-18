@@ -8,90 +8,128 @@
     src: url('proximanova_light.otf') format('opentype');
 }
 
-h1 {
-    color: white;
+* {
     margin: 0;
-    margin-bottom: 15px;
-    padding: 0;
-}
-
-h2, h4 {
-    color: gray;
-    margin: 0;
-    margin-bottom: 5px;
     padding: 0;
 }
 
 body {
-    margin: 0;
     font-family: 'ProximaNova-400', sans-serif;
     letter-spacing: 3px;
 }
 
 .container {
     display: flex;
+    flex-direction: column;
     height: 100vh;
-    margin: 0;
-    padding: 0;
+    width: 100%;
 }
+
+@media (min-width: 1068px) {
+    .container {
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+        width: 100%;
+    }
+}
+
+/* Left Side  ---------------------------------------------------------------------------- */
 
 .left {
     flex: 40%; 
+
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+
     background-image: url('images/background.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: right center;
+
+    position: relative;
 }
 
-.right {
-    flex: 60%;
-    background-color: #ddd; /* Just for visibility */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.65); /* Black with opacity */
+    z-index: 1;
 }
 
-.profile {
-    margin-top: 30%;
-    margin-right: 14%;
+.left > *:not(.overlay) {
+    position: relative;
+    z-index: 2;
+}
+
+.left h2 {
+    margin: 12vh 0 2vh 0;
+}
+
+.container-left {
+    margin: 0 10% 12vh;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    flex-grow: 1;
 }
 
-.profile img {
+.container-left img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    object-fit: cover;
+    align-self: flex-end;
+    margin-bottom: 4vh;
 }
 
-.bio {
-    margin-top: 50px;
-    text-align: right;
-}
-
-.content {
-    margin: 10% 5%;
-}
-
-.resume {
-    margin-right: 14%;
-    margin-top: 5%;
-}
-
-.resume h4 {
-    color: gray;
-    transition: color 0.5s ease;
-}
-
-.resume h4:hover {
+.container-left h1 {
     color: white;
+    align-self: flex-end;
+    text-transform: uppercase;
+    margin-bottom: 1vh;
+}
+
+.container-left h2 { 
+    margin: 0 0 1vh 0 ;
+    padding: 0;
+    color: gray;
+    align-self: flex-end;
+}
+
+.container-left h4 {
+    color: gray;
+    align-self: flex-end;
+}
+
+#resume {
+    margin-top: 2vh;
+    text-transform: uppercase;
+}
+
+h4 a {
+    text-decoration: none;
+    border-bottom: 1px dotted gray;
+    color: gray;
+    transition: color 0.5s ease, border-color 0.5s ease;
+}
+
+.container-left a:hover {
+    color: white;
+    border-color: white;
 }
 
 .links {
-    margin-right: 14%;
-    margin-top: 40%;
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+@media (min-width: 1068px) {
+    .links {
+        margin-top: auto;
+        align-self: flex-end;
+    }
 }
 
 .icons {
@@ -101,15 +139,111 @@ body {
 }
 
 .icons li {
-    margin-left: 10px;
+    margin-left: 12px;
 }
 
 .icons i {
-    font-size: 32px; /* Example size */
+    font-size: 40px; /* Example size */
     color: gray; /* Example color */
     transition: color 0.5s ease;
 }
 
 .icons i:hover {
     color: white;
+}
+
+/* Right Side ---------------------------------------------------------------------------- */
+
+.right {
+    flex: 60%;
+    background-color: #ddd; /* Just for visibility */
+    display: flex;
+    flex-direction: column;
+}
+
+.right h2 {
+    margin: 12vh 0 2vh 5%;
+    color: gray;
+    text-transform: uppercase;
+}
+
+.container-right {
+    margin: 0 5% 12vh 5%;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 40px;
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.grid-item {
+    letter-spacing: 2px;
+}
+
+.image-link {
+    display: inline-block; /* or 'block', depending on your layout */
+    position: relative;
+    border-radius: 5%;
+    overflow: hidden;
+}
+
+.image-link img {
+    display: block; /* Remove default spacing below images */
+    width: 100%; /* Responsive image */
+    height: auto;
+}
+
+.image-link .view-text {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust to exact center */
+    color: #FFFFFF; /* Text color */
+    font-size: 20px; /* Adjust as needed */
+    opacity: 0; /* Initially transparent */
+    transition: opacity 0.5s ease; /* Transition for the text */
+    z-index: 2;
+}
+
+.image-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0); /* Initially transparent */
+    transition: background-color 0.5s ease; /* Smooth transition for the darkening effect */
+    z-index: 1;
+}
+
+.image-link:hover::after {
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black on hover */
+}
+
+.image-link:hover .view-text {
+    opacity: 1; /* Text becomes visible on hover */
+}
+
+.grid-item h6 {
+    margin: 0.5vh 0;
+    text-transform: uppercase;
+}
+
+.grid-item h3 a {
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px dotted black;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.grid-item a:hover {
+    color: gray;
+    border-color: transparent;
+}
+
+.grid-item p {
+    margin-top: 10px;
 }

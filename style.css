@@ -83,18 +83,18 @@ body {
     height: 200px;
     border-radius: 50%;
     align-self: flex-end;
-    margin-bottom: 4vh;
+    margin-bottom: 3vh;
 }
 
 .container-left h1 {
     color: white;
     align-self: flex-end;
     text-transform: uppercase;
-    margin-bottom: 1vh;
+    margin-bottom: 2vh;
 }
 
 .container-left h2 { 
-    margin: 0 0 1vh 0 ;
+    margin: 0 0 0.5vh 0 ;
     padding: 0;
     color: gray;
     align-self: flex-end;
@@ -106,7 +106,7 @@ body {
 }
 
 #resume {
-    margin-top: 2vh;
+    margin-top: 3vh;
     text-transform: uppercase;
 }
 
